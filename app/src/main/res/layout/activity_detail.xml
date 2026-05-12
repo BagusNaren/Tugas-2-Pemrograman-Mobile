@@ -141,9 +141,10 @@
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="12dp"
-                    android:backgroundTint="#2A2A2A"
-                    android:src="@android:drawable/btn_star_big_off"
-                    app:tint="@android:color/white"
+                    android:background="@drawable/bg_circle_button"
+                    android:src="@drawable/ic_favorite_border"
+                    app:tint="#FFFFFF"
+                    android:padding="12dp"
                     android:contentDescription="Favorite" />
 
                 <ImageButton

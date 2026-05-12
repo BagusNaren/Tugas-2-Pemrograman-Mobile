@@ -1,6 +1,7 @@
 package com.example.movieverse.ui
 
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,10 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var detailCast: TextView
     private lateinit var detailDirector: TextView
 
+    private lateinit var btnFavorite: ImageButton
+
+    private var isFavorite = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -29,6 +34,8 @@ class DetailActivity : AppCompatActivity() {
         initViews()
 
         getMovieData()
+
+        setupFavoriteButton()
     }
 
     private fun initViews() {
@@ -59,6 +66,9 @@ class DetailActivity : AppCompatActivity() {
 
         detailDirector =
             findViewById(R.id.detailDirector)
+
+        btnFavorite =
+            findViewById(R.id.btnFavorite)
     }
 
     private fun getMovieData() {
@@ -115,5 +125,22 @@ class DetailActivity : AppCompatActivity() {
 
         detailDirector.text =
             director
+    }
+
+    private fun setupFavoriteButton() {
+
+        btnFavorite.setOnClickListener {
+
+            isFavorite = !isFavorite
+
+            if (isFavorite) {
+
+                btnFavorite.setImageResource(R.drawable.ic_favorite)
+
+            } else {
+
+                btnFavorite.setImageResource(R.drawable.ic_favorite_border)
+            }
+        }
     }
 }
