@@ -191,7 +191,7 @@
                 android:id="@+id/detailCast"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/matthew_mcconaughey_anne_hathaway_jessica_chastain"
+                android:text="Cast"
                 android:textColor="#D0D0D0"
                 android:textSize="16sp"
                 android:lineSpacingExtra="4dp" />
@@ -210,7 +210,7 @@
                 android:id="@+id/detailDirector"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/christopher_nolan"
+                android:text="Director"
                 android:textColor="#D0D0D0"
                 android:textSize="16sp" />
 

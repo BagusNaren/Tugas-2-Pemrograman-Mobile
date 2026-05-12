@@ -138,6 +138,15 @@ class MovieAdapter(
                 movie.description
             )
 
+            intent.putExtra(
+                "cast",
+                movie.cast
+            )
+            intent.putExtra(
+                "director",
+                movie.director
+            )
+
             holder.itemView.context
                 .startActivity(intent)
         }

@@ -70,6 +70,8 @@ class PopularMovieAdapter(
             intent.putExtra("duration", movie.duration)
             intent.putExtra("image", movie.imageResId)
             intent.putExtra("description", movie.description)
+            intent.putExtra("cast", movie.cast)
+            intent.putExtra("director", movie.director)
 
             holder.itemView.context.startActivity(intent)
         }

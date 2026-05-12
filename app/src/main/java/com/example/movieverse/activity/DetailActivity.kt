@@ -17,7 +17,11 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var detailDuration: TextView
     private lateinit var detailDescription: TextView
 
+    private lateinit var detailCast: TextView
+    private lateinit var detailDirector: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_detail)
@@ -49,6 +53,12 @@ class DetailActivity : AppCompatActivity() {
 
         detailDescription =
             findViewById(R.id.detailDescription)
+
+        detailCast =
+            findViewById(R.id.detailCast)
+
+        detailDirector =
+            findViewById(R.id.detailDirector)
     }
 
     private fun getMovieData() {
@@ -74,18 +84,36 @@ class DetailActivity : AppCompatActivity() {
         val description =
             intent.getStringExtra("description")
 
+        val cast =
+            intent.getStringExtra("cast")
+
+        val director =
+            intent.getStringExtra("director")
+
         detailImage.setImageResource(image)
 
-        detailTitle.text = title
+        detailTitle.text =
+            title
 
-        detailGenre.text = genre
+        detailGenre.text =
+            genre
 
-        detailRating.text = "⭐ $rating"
+        detailRating.text =
+            "⭐ $rating"
 
-        detailYear.text = year
+        detailYear.text =
+            year
 
-        detailDuration.text = duration
+        detailDuration.text =
+            duration
 
-        detailDescription.text = description
+        detailDescription.text =
+            description
+
+        detailCast.text =
+            cast
+
+        detailDirector.text =
+            director
     }
 }
