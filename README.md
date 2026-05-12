@@ -42,7 +42,7 @@ Aplikasi ini dibuat sebagai bagian dari **Tugas 2 Pemrograman Mobile Kelas A**.
   - Rating Film Highest to Lowest
   - Rating Film Lowest to Highest
   - Film Terbaru
-  - Film Tertua
+  - Film Terlama
   - Film Berdasarkan Urutan Alfabet (A-Z)
 - 🎬 Halaman detail film
 - 📤 Share film
