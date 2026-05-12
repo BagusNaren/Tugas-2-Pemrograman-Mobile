@@ -2,6 +2,7 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121212">
@@ -16,66 +17,204 @@
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/interstellar"/>
+            android:src="@drawable/interstellar" />
 
-        <TextView
-            android:id="@+id/detailTitle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Movie Title"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:padding="16dp"/>
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <TextView
-            android:id="@+id/detailGenre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Genre"
-            android:textColor="#BDBDBD"
-            android:textSize="18sp"
-            android:paddingStart="16dp"/>
+            <TextView
+                android:id="@+id/detailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Movie Title"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/detailRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="⭐ 8.9"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:paddingStart="16dp"
-            android:paddingTop="10dp"/>
+            <TextView
+                android:id="@+id/detailGenre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sci_fi_adventure"
+                android:textColor="#BDBDBD"
+                android:textSize="16sp"
+                android:layout_marginTop="6dp" />
 
-        <TextView
-            android:id="@+id/detailYear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2014"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:paddingStart="16dp"
-            android:paddingTop="6dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="14dp">
 
-        <TextView
-            android:id="@+id/detailDuration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2h 49m"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:paddingStart="16dp"
-            android:paddingTop="6dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingEnd="20dp">
 
-        <TextView
-            android:id="@+id/detailDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Movie Description"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:lineSpacingExtra="4dp"
-            android:padding="16dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⭐"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/detailRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8.9"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:layout_marginStart="4dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingEnd="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📅"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/detailYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2014"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:layout_marginStart="4dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⏱"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/detailDuration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_2h_49m"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:layout_marginStart="4dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/btnWatchNow"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:text="@string/watch_now"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="#E50914" />
+
+                <ImageButton
+                    android:id="@+id/btnFavorite"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="12dp"
+                    android:backgroundTint="#2A2A2A"
+                    android:src="@android:drawable/btn_star_big_off"
+                    app:tint="@android:color/white"
+                    android:contentDescription="Favorite" />
+
+                <ImageButton
+                    android:id="@+id/btnShare"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#2A2A2A"
+                    android:src="@android:drawable/ic_menu_share"
+                    app:tint="@android:color/white"
+                    android:contentDescription="@string/share" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/overview"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/detailDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_description"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:lineSpacingExtra="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cast"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/detailCast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/matthew_mcconaughey_anne_hathaway_jessica_chastain"
+                android:textColor="#D0D0D0"
+                android:textSize="16sp"
+                android:lineSpacingExtra="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/director"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/detailDirector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/christopher_nolan"
+                android:textColor="#D0D0D0"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

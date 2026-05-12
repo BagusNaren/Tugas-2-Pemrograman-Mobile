@@ -11,5 +11,20 @@
     <string name="filter_amp_sort"><![CDATA[Filter & Sort]]></string>
     <string name="filter">Filter</string>
     <string name="sort_by">Sort By</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="genre">Genre</string>
+    <string name="_8_9">⭐ 8.9</string>
+    <string name="_2014">2014</string>
+    <string name="interstellar">Interstellar</string>
+    <string name="sci_fi_adventure">Sci-Fi • Adventure</string>
+    <string name="_2h_49m">2h 49m</string>
+    <string name="watch_now">▶ Watch Now</string>
+    <string name="share">Share</string>
+    <string name="overview">Overview</string>
+    <string name="movie_description">Movie Description</string>
+    <string name="cast">Cast</string>
+    <string name="matthew_mcconaughey_anne_hathaway_jessica_chastain">Matthew McConaughey, Anne Hathaway, Jessica Chastain</string>
+    <string name="director">Director</string>
+    <string name="christopher_nolan">Christopher Nolan</string>
 
 </resources>

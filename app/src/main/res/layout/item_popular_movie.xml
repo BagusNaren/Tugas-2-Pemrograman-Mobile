@@ -25,7 +25,7 @@
             android:id="@+id/txtPopularTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Interstellar"
+            android:text="@string/interstellar"
             android:textStyle="bold"
             android:textSize="18sp"
             android:paddingStart="10dp"
