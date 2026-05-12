@@ -214,6 +214,7 @@ app/
 │ │ ├── doctor_strange.jpg
 │ │ ├── ic_favorite.xml
 │ │ ├── ic_favorite_border.xml
+│ │ ├── bg_circle_button.xml
 │ │ ├── ic_launcher_background.xml
 │ │ ├── ic_launcher_foreground.xml
 │ │ ├── ic_movieverse_logo.png
@@ -311,7 +312,7 @@ app/
    git clone https://github.com/BagusNaren/Tugas-2-Pemrograman-Mobile
    ```
 2. Buka project di Android Studio
-3. Tunggu proses Gradle Sync selesai
+3. Tunggu proses Gradle Sync dan Gradle Build selesai
 4. Jalankan emulator / hubungkan device
 5. Klik tombol:
    ```bash
