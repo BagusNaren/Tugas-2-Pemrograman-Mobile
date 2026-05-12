@@ -1,5 +1,15 @@
 <resources>
 
     <string name="app_name">MovieVerse</string>
+    <string name="movieverse">MovieVerse</string>
+    <string name="discover_your_favorite_movies">Discover your favorite movies</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="favorite">Favorite</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="all_movies">All Movies</string>
+    <string name="no_movies_found">No movies found</string>
+    <string name="filter_amp_sort"><![CDATA[Filter & Sort]]></string>
+    <string name="filter">Filter</string>
+    <string name="sort_by">Sort By</string>
 
 </resources>

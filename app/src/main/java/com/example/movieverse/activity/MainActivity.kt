@@ -5,8 +5,10 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CheckBox
+import android.widget.LinearLayout
 import android.widget.SearchView
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,7 +31,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var spinnerGenre: Spinner
     private lateinit var spinnerYear: Spinner
     private lateinit var spinnerRating: Spinner
+    private lateinit var spinnerSort: Spinner
+
     private lateinit var checkFavorite: CheckBox
+
+    // EMPTY STATE
+    private lateinit var emptyStateLayout: LinearLayout
+    private lateinit var txtEmpty: TextView
 
     private var movieList = ArrayList<Movie>()
 
@@ -70,8 +78,17 @@ class MainActivity : AppCompatActivity() {
         spinnerRating =
             findViewById(R.id.spinnerRating)
 
+        spinnerSort =
+            findViewById(R.id.spinnerSort)
+
         checkFavorite =
             findViewById(R.id.checkFavorite)
+
+        emptyStateLayout =
+            findViewById(R.id.emptyStateLayout)
+
+        txtEmpty =
+            findViewById(R.id.txtEmpty)
     }
 
     private fun setupMovieRecyclerView() {
@@ -166,7 +183,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupFilters() {
 
-        // GENRE
         val genres = listOf(
             "All Genre",
             "Action",
@@ -194,6 +210,15 @@ class MainActivity : AppCompatActivity() {
             "8.5+"
         )
 
+        val sorts = listOf(
+            "Sort By",
+            "Rating Highest",
+            "Rating Lowest",
+            "Newest",
+            "Oldest",
+            "A-Z"
+        )
+
         spinnerGenre.adapter =
             ArrayAdapter(
                 this,
@@ -215,63 +240,49 @@ class MainActivity : AppCompatActivity() {
                 ratings
             )
 
+        spinnerSort.adapter =
+            ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                sorts
+            )
+
         spinnerGenre.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-
-                    applyFilters()
-                }
-
-                override fun onNothingSelected(
-                    parent: AdapterView<*>?
-                ) {}
-            }
+            filterListener()
 
         spinnerYear.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-
-                    applyFilters()
-                }
-
-                override fun onNothingSelected(
-                    parent: AdapterView<*>?
-                ) {}
-            }
+            filterListener()
 
         spinnerRating.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
+            filterListener()
 
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-
-                    applyFilters()
-                }
-
-                override fun onNothingSelected(
-                    parent: AdapterView<*>?
-                ) {}
-            }
+        spinnerSort.onItemSelectedListener =
+            filterListener()
 
         checkFavorite.setOnCheckedChangeListener { _, _ ->
 
             applyFilters()
+        }
+    }
+
+    private fun filterListener():
+            AdapterView.OnItemSelectedListener {
+
+        return object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+
+                applyFilters()
+            }
+
+            override fun onNothingSelected(
+                parent: AdapterView<*>?
+            ) {}
         }
     }
 
@@ -293,6 +304,9 @@ class MainActivity : AppCompatActivity() {
 
         val selectedRating =
             spinnerRating.selectedItem.toString()
+
+        val selectedSort =
+            spinnerSort.selectedItem.toString()
 
         val favoriteOnly =
             checkFavorite.isChecked
@@ -365,6 +379,64 @@ class MainActivity : AppCompatActivity() {
 
                 filteredList.add(movie)
             }
+        }
+
+        when (selectedSort) {
+
+            "Rating Highest" -> {
+
+                filteredList.sortByDescending {
+                    it.rating
+                }
+            }
+
+            "Rating Lowest" ->  {
+
+                filteredList.sortBy {
+                    it.rating
+                }
+            }
+
+            "Newest" -> {
+
+                filteredList.sortByDescending {
+                    it.year.toInt()
+                }
+            }
+
+            "Oldest" -> {
+
+                filteredList.sortBy {
+                    it.year.toInt()
+                }
+            }
+
+            "A-Z" -> {
+
+                filteredList.sortBy {
+                    it.title
+                }
+            }
+        }
+
+        if (filteredList.isEmpty()) {
+
+            emptyStateLayout.visibility =
+                View.VISIBLE
+
+            recyclerMovie.visibility =
+                View.GONE
+
+            txtEmpty.text =
+                "🎬 No movies found"
+
+        } else {
+
+            emptyStateLayout.visibility =
+                View.GONE
+
+            recyclerMovie.visibility =
+                View.VISIBLE
         }
 
         movieAdapter.filterList(filteredList)
