@@ -93,7 +93,7 @@ object MovieData {
 
         Movie(
             id = 8,
-            title = "Spider-Man No Way Home",
+            title = "Spider-Man: Homecoming",
             genre = "Superhero",
             rating = 8.2,
             year = "2021",
@@ -104,7 +104,6 @@ object MovieData {
         )
     )
 
-    // Popular Movies
     val popularMovieList = listOf(
 
         Movie(

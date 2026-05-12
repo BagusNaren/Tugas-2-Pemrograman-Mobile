@@ -14,7 +14,11 @@ import com.example.movieverse.model.Movie
 import com.example.movieverse.ui.DetailActivity
 
 class MovieAdapter(
-    private var movieList: List<Movie>
+
+    private var movieList: MutableList<Movie>,
+
+    private val onFavoriteChanged: (() -> Unit)? = null
+
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     class MovieViewHolder(itemView: View) :
@@ -48,7 +52,11 @@ class MovieAdapter(
     ): MovieViewHolder {
 
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_movie, parent, false)
+            .inflate(
+                R.layout.item_movie,
+                parent,
+                false
+            )
 
         return MovieViewHolder(view)
     }
@@ -60,28 +68,32 @@ class MovieAdapter(
 
         val movie = movieList[position]
 
-        holder.imgMovie.setImageResource(movie.imageResId)
+        holder.imgMovie.setImageResource(
+            movie.imageResId
+        )
 
-        holder.txtTitle.text = movie.title
-        holder.txtGenre.text = movie.genre
-        holder.txtRating.text = "⭐ ${movie.rating}"
-        holder.txtYear.text = movie.year
+        holder.txtTitle.text =
+            movie.title
 
-        if (movie.isFavorite) {
-            holder.btnFavorite.setImageResource(
-                R.drawable.ic_favorite
-            )
-        } else {
-            holder.btnFavorite.setImageResource(
-                R.drawable.ic_favorite_border
-            )
-        }
+        holder.txtGenre.text =
+            movie.genre
+
+        holder.txtRating.text =
+            "⭐ ${movie.rating}"
+
+        holder.txtYear.text =
+            movie.year
+
+        updateFavoriteIcon(holder, movie)
 
         holder.btnFavorite.setOnClickListener {
 
-            movie.isFavorite = !movie.isFavorite
+            movie.isFavorite =
+                !movie.isFavorite
 
-            notifyItemChanged(position)
+            updateFavoriteIcon(holder, movie)
+
+            onFavoriteChanged?.invoke()
         }
 
         holder.itemView.setOnClickListener {
@@ -91,24 +103,79 @@ class MovieAdapter(
                 DetailActivity::class.java
             )
 
-            intent.putExtra("title", movie.title)
-            intent.putExtra("genre", movie.genre)
-            intent.putExtra("rating", movie.rating)
-            intent.putExtra("year", movie.year)
-            intent.putExtra("duration", movie.duration)
-            intent.putExtra("image", movie.imageResId)
-            intent.putExtra("description", movie.description)
+            intent.putExtra(
+                "title",
+                movie.title
+            )
 
-            holder.itemView.context.startActivity(intent)
+            intent.putExtra(
+                "genre",
+                movie.genre
+            )
+
+            intent.putExtra(
+                "rating",
+                movie.rating
+            )
+
+            intent.putExtra(
+                "year",
+                movie.year
+            )
+
+            intent.putExtra(
+                "duration",
+                movie.duration
+            )
+
+            intent.putExtra(
+                "image",
+                movie.imageResId
+            )
+
+            intent.putExtra(
+                "description",
+                movie.description
+            )
+
+            holder.itemView.context
+                .startActivity(intent)
         }
     }
 
     override fun getItemCount(): Int {
+
         return movieList.size
     }
 
-    fun filterList(filteredList: List<Movie>) {
-        movieList = filteredList
+    fun filterList(
+        filteredList: List<Movie>
+    ) {
+
+        movieList =
+            filteredList.toMutableList()
+
         notifyDataSetChanged()
+    }
+
+    private fun updateFavoriteIcon(
+        holder: MovieViewHolder,
+        movie: Movie
+    ) {
+
+        if (movie.isFavorite) {
+
+            holder.btnFavorite
+                .setImageResource(
+                    R.drawable.ic_favorite
+                )
+
+        } else {
+
+            holder.btnFavorite
+                .setImageResource(
+                    R.drawable.ic_favorite_border
+                )
+        }
     }
 }

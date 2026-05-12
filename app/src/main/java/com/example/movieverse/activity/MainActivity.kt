@@ -1,7 +1,12 @@
 package com.example.movieverse.ui
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.CheckBox
 import android.widget.SearchView
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,9 +26,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var searchView: SearchView
 
+    private lateinit var spinnerGenre: Spinner
+    private lateinit var spinnerYear: Spinner
+    private lateinit var spinnerRating: Spinner
+    private lateinit var checkFavorite: CheckBox
+
     private var movieList = ArrayList<Movie>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
@@ -35,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         setupPopularRecyclerView()
 
         setupSearch()
+
+        setupFilters()
     }
 
     private fun initViews() {
@@ -47,24 +60,57 @@ class MainActivity : AppCompatActivity() {
 
         searchView =
             findViewById(R.id.searchView)
+
+        spinnerGenre =
+            findViewById(R.id.spinnerGenre)
+
+        spinnerYear =
+            findViewById(R.id.spinnerYear)
+
+        spinnerRating =
+            findViewById(R.id.spinnerRating)
+
+        checkFavorite =
+            findViewById(R.id.checkFavorite)
     }
 
     private fun setupMovieRecyclerView() {
 
-        movieList = ArrayList(MovieData.movieList)
+        movieList =
+            ArrayList(MovieData.movieList)
 
-        movieAdapter = MovieAdapter(movieList)
+        movieAdapter =
+            MovieAdapter(
+                movieList
+            ) {
+
+                applyFilters()
+            }
 
         recyclerMovie.layoutManager =
             LinearLayoutManager(this)
 
-        recyclerMovie.adapter = movieAdapter
+        recyclerMovie.adapter =
+            movieAdapter
+
+        recyclerMovie.isNestedScrollingEnabled =
+            false
+
+        recyclerMovie.setHasFixedSize(false)
+
+        recyclerMovie.isFocusable =
+            false
+
+        recyclerMovie.isFocusableInTouchMode =
+            false
     }
 
     private fun setupPopularRecyclerView() {
 
         popularMovieAdapter =
-            PopularMovieAdapter(MovieData.popularMovieList)
+            PopularMovieAdapter(
+                MovieData.popularMovieList
+            )
 
         recyclerPopular.layoutManager =
             LinearLayoutManager(
@@ -75,9 +121,24 @@ class MainActivity : AppCompatActivity() {
 
         recyclerPopular.adapter =
             popularMovieAdapter
+
+        recyclerPopular.isNestedScrollingEnabled =
+            false
+
+        recyclerPopular.setHasFixedSize(false)
+
+        recyclerPopular.isFocusable =
+            false
+
+        recyclerPopular.isFocusableInTouchMode =
+            false
     }
 
     private fun setupSearch() {
+
+        searchView.isIconified = false
+
+        searchView.clearFocus()
 
         searchView.setOnQueryTextListener(
             object : SearchView.OnQueryTextListener {
@@ -85,14 +146,17 @@ class MainActivity : AppCompatActivity() {
                 override fun onQueryTextSubmit(
                     query: String?
                 ): Boolean {
-                    return false
+
+                    applyFilters()
+
+                    return true
                 }
 
                 override fun onQueryTextChange(
                     newText: String?
                 ): Boolean {
 
-                    filterMovies(newText)
+                    applyFilters()
 
                     return true
                 }
@@ -100,28 +164,206 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private fun filterMovies(query: String?) {
+    private fun setupFilters() {
 
-        val filteredList = ArrayList<Movie>()
+        // GENRE
+        val genres = listOf(
+            "All Genre",
+            "Action",
+            "Drama",
+            "Fantasy",
+            "Sci-Fi",
+            "Superhero"
+        )
 
-        if (query.isNullOrEmpty()) {
+        val years = listOf(
+            "All Year",
+            "2009",
+            "2010",
+            "2014",
+            "2016",
+            "2019",
+            "2021",
+            "2022"
+        )
 
-            filteredList.addAll(movieList)
+        val ratings = listOf(
+            "All Rating",
+            "7+",
+            "8+",
+            "8.5+"
+        )
 
-        } else {
+        spinnerGenre.adapter =
+            ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                genres
+            )
 
-            val searchText =
-                query.lowercase()
+        spinnerYear.adapter =
+            ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                years
+            )
 
-            for (movie in movieList) {
+        spinnerRating.adapter =
+            ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                ratings
+            )
 
-                if (
-                    movie.title.lowercase()
-                        .contains(searchText)
+        spinnerGenre.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
                 ) {
 
-                    filteredList.add(movie)
+                    applyFilters()
                 }
+
+                override fun onNothingSelected(
+                    parent: AdapterView<*>?
+                ) {}
+            }
+
+        spinnerYear.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+
+                    applyFilters()
+                }
+
+                override fun onNothingSelected(
+                    parent: AdapterView<*>?
+                ) {}
+            }
+
+        spinnerRating.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+
+                    applyFilters()
+                }
+
+                override fun onNothingSelected(
+                    parent: AdapterView<*>?
+                ) {}
+            }
+
+        checkFavorite.setOnCheckedChangeListener { _, _ ->
+
+            applyFilters()
+        }
+    }
+
+    private fun applyFilters() {
+
+        val filteredList =
+            ArrayList<Movie>()
+
+        val searchText =
+            searchView.query.toString()
+                .trim()
+                .lowercase()
+
+        val selectedGenre =
+            spinnerGenre.selectedItem.toString()
+
+        val selectedYear =
+            spinnerYear.selectedItem.toString()
+
+        val selectedRating =
+            spinnerRating.selectedItem.toString()
+
+        val favoriteOnly =
+            checkFavorite.isChecked
+
+        for (movie in movieList) {
+
+            var matches = true
+
+            if (
+                searchText.isNotEmpty() &&
+                !movie.title.lowercase()
+                    .contains(searchText)
+            ) {
+
+                matches = false
+            }
+
+            if (
+                selectedGenre != "All Genre" &&
+                movie.genre != selectedGenre
+            ) {
+
+                matches = false
+            }
+
+            if (
+                selectedYear != "All Year" &&
+                movie.year != selectedYear
+            ) {
+
+                matches = false
+            }
+
+            when (selectedRating) {
+
+                "7+" -> {
+
+                    if (movie.rating < 7.0) {
+
+                        matches = false
+                    }
+                }
+
+                "8+" -> {
+
+                    if (movie.rating < 8.0) {
+
+                        matches = false
+                    }
+                }
+
+                "8.5+" -> {
+
+                    if (movie.rating < 8.5) {
+
+                        matches = false
+                    }
+                }
+            }
+
+            if (
+                favoriteOnly &&
+                !movie.isFavorite
+            ) {
+
+                matches = false
+            }
+
+            if (matches) {
+
+                filteredList.add(movie)
             }
         }
 
