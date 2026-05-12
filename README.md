@@ -115,7 +115,7 @@ Pada halaman ini pengguna dapat mencari, memfilter, melakukan sorting, dan melih
 
 ### 🎬 Detail Screen
 
-<img width="584" height="1338" alt="Screenshot 2026-05-13 020830" src="https://github.com/user-attachments/assets/b1da9dcf-b799-4f08-b6b6-0ca8f551acb6" />
+<img width="584" height="1346" alt="Screenshot 2026-05-13 031534" src="https://github.com/user-attachments/assets/4588c2f7-72c1-4af2-9236-f31c73fa15a1" />
 
 #### 📌 Penjelasan
 Detail Screen digunakan untuk menampilkan informasi lengkap mengenai movie yang dipilih pengguna dari Home Screen.
