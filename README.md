@@ -127,7 +127,7 @@ Pada halaman ini pengguna dapat mencari, memfilter, melakukan sorting, dan melih
 ### 🎬 Detail Screen
 
 <p align="center">
-  <img width="45%" height="990" alt="Screenshot 2026-05-13 031534" src="https://github.com/user-attachments/assets/4588c2f7-72c1-4af2-9236-f31c73fa15a1" />
+  <img width="45%" height="980" alt="Screenshot 2026-05-13 031534" src="https://github.com/user-attachments/assets/4588c2f7-72c1-4af2-9236-f31c73fa15a1" />
   <img width="45%" height="1348" alt="Screenshot 2026-05-13 123820" src="https://github.com/user-attachments/assets/d93540e6-38f5-4c2b-acb0-cd099eab4c9c" />
 </p>
 
