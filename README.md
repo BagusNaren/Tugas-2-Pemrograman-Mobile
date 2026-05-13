@@ -58,7 +58,10 @@ Aplikasi ini dibuat sebagai bagian dari **Tugas 2 Pemrograman Mobile Kelas A**.
 
 ### 🚀 Splash Screen
 
-<img width="630" height="1236" alt="Screenshot 2026-05-13 020744" src="https://github.com/user-attachments/assets/1c7bf674-46b2-4a94-a493-124b1f9b2b4f" />
+<p align="center">
+  <img width="45%" height="870" alt="Screenshot 2026-05-13 123755" src="https://github.com/user-attachments/assets/2acf3b0e-7123-4350-8a65-63bededd105d" />
+   <img width="45%" height="1236" alt="Screenshot 2026-05-13 020744" src="https://github.com/user-attachments/assets/1c7bf674-46b2-4a94-a493-124b1f9b2b4f" />
+</p>
 
 #### 📌 Penjelasan
 Splash Screen merupakan tampilan pertama saat aplikasi dijalankan.  
@@ -74,7 +77,15 @@ Halaman ini digunakan untuk memberikan identitas aplikasi sebelum pengguna masuk
 
 ### 🏠 Home Screen
 
-<img width="631" height="1353" alt="Screenshot 2026-05-13 020801" src="https://github.com/user-attachments/assets/c9966c15-9e34-42cd-ad93-53bd47300f92" />
+<p align="center">
+  <img width="45%" height="1353" alt="Screenshot 2026-05-13 020801" src="https://github.com/user-attachments/assets/c9966c15-9e34-42cd-ad93-53bd47300f92" />
+  <img width="45%" height="1351" alt="Screenshot 2026-05-13 123918" src="https://github.com/user-attachments/assets/5889f817-2be4-47e5-9ecd-896bfb62c104" />
+</p>
+
+<p align="center">
+  <img width="45%" height="1353" alt="Screenshot 2026-05-13 123941" src="https://github.com/user-attachments/assets/d20f13c8-12be-4747-98fb-019b6f596aed" />
+  <img width="45%" height="1000" alt="Screenshot 2026-05-13 123958" src="https://github.com/user-attachments/assets/f76de8ae-b833-4d91-8199-7d6ade916f29" />
+</p>
 
 #### 📌 Penjelasan
 Home Screen merupakan halaman utama aplikasi yang digunakan pengguna untuk menjelajahi daftar film.
@@ -115,7 +126,10 @@ Pada halaman ini pengguna dapat mencari, memfilter, melakukan sorting, dan melih
 
 ### 🎬 Detail Screen
 
-<img width="584" height="1346" alt="Screenshot 2026-05-13 031534" src="https://github.com/user-attachments/assets/4588c2f7-72c1-4af2-9236-f31c73fa15a1" />
+<p align="center">
+  <img width="45%" height="990" alt="Screenshot 2026-05-13 031534" src="https://github.com/user-attachments/assets/4588c2f7-72c1-4af2-9236-f31c73fa15a1" />
+  <img width="45%" height="1348" alt="Screenshot 2026-05-13 123820" src="https://github.com/user-attachments/assets/d93540e6-38f5-4c2b-acb0-cd099eab4c9c" />
+</p>
 
 #### 📌 Penjelasan
 Detail Screen digunakan untuk menampilkan informasi lengkap mengenai movie yang dipilih pengguna dari Home Screen.
