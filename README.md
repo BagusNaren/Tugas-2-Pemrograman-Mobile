@@ -1,5 +1,5 @@
 # 📱 Tugas 2 - Pemrograman Mobile  
-## 🎬 MovieVerse  
+## 🎬 **MovieVerse**
 ### Aplikasi Katalog Film Android    
 
 ---
@@ -348,8 +348,30 @@ app/
 
 ---
 
+### 📱 Spesifikasi Aplikasi
+- **Minimum SDK** : 24 (Android 7.0 Nougat)
+- **Target SDK** : 36 (Android 16)
+- **Compile SDK** : 35 (Android 15)
+- **Minimum Android API** : API Level 24
+
+Aplikasi MovieVerse dirancang agar dapat berjalan pada berbagai perangkat Android modern dengan tetap menjaga kompatibilitas terhadap fitur Android terbaru.
+
+---
+
 ### ✨ Preview Aplikasi
 MovieVerse menghadirkan tampilan modern bergaya streaming platform dengan nuansa dark mode dan pengalaman browsing movie yang interaktif.
+
+---
+
+### 📚 Referensi
+1. Android Developers. *RecyclerView Documentation*  
+   https://developer.android.com/develop/ui/views/layout/recyclerview
+
+2. Android Developers. *Intents and Intent Filters*  
+   https://developer.android.com/guide/components/intents-filters
+
+3. Kotlin Documentation. *Kotlin for Android*  
+   https://kotlinlang.org/docs/android-overview.html
 
 ---
 
