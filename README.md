@@ -11,7 +11,7 @@ Aplikasi ini memungkinkan pengguna untuk mencari film, memfilter berdasarkan kat
 
 Project ini dibuat sebagai implementasi pembelajaran **Pemrograman Mobile Android** menggunakan komponen modern Android seperti **RecyclerView**, **Intent**, dan **Custom Adapter**.
 
-Aplikasi ini dibuat sebagai bagian dari **Tugas 2 Pemrograman Mobile Kelas A**.
+Aplikasi ini dibuat sebagai bagian dari **Ujian Tengah Semester (UTS) Pemrograman Mobile Kelas A**.
 
 ---
 
